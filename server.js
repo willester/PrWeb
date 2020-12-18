@@ -88,15 +88,10 @@ const Project = sequelize.define('project', {
   })
 
 
-
-
-
-
   Team.hasMany(User)
   Team.hasMany(Project)
   User.hasMany(Bug)
   Project.hasMany(Bug)
-
 
 
   const app = express()
@@ -183,6 +178,7 @@ app.post('/teams', async (req, res, next) => {
 })
 
 
+//ramane de vazut
 app.get('/teams/:tid', async (req, res, next) => {
   try {
     const team = await Team.findByPk(req.params.tid)
@@ -195,6 +191,7 @@ app.get('/teams/:tid', async (req, res, next) => {
     next(err)
   }
 })
+
 
 app.put('/teams/:tid', async (req, res, next) => {
   try {
@@ -268,6 +265,74 @@ app.get('/users/:uid', async (req, res, next) => {
   }
 })
 
+
+// log in for users
+
+//de modificat oartea cu res.status(200)
+
+app.post('/users/logIn', async (req, res, next) => {
+  try {
+
+    const user = req.body.username
+   
+   
+   const user2 =  await User.findOne({where :{ username: user}})
+
+    if (user2) {
+      // metoda de testare daca merge 
+      res.status(200).json(user2)
+    } else {
+      res.status(404).json({ message: 'not found in db' })
+    }
+  } catch (err) {
+    next(err)
+  }
+})
+
+// regisgtrarre userino
+app.post('/users/register', async (req, res, next) => {
+  try {
+
+    //await User.create(req.body)
+    //res.status(201).json({ message: 'created' })
+    const imail = req.body.email
+
+
+    const userExistent = await User.findOne({where: {email: imail}})
+
+    if(!userExistent) {
+      await User.create(req.body)
+     res.status(201).json({ message: 'created' })
+    } else {
+      
+       res.status(404).json({ message: userExistent })
+    }
+  } catch (err) {
+    next(err)
+  }
+})
+
+
+
+//iesire din cont .// de modificat 
+app.delete('/users/logOut', async (req, res, next) => {
+  try {
+
+   const user = req.body.username
+   
+   
+   const user2 =  await User.findOne({where :{ username: user}})
+
+    if (user2) {
+      // metoda de testare daca merge 
+      res.status(200).json(user2)
+    } else {
+      res.status(404).json({ message: 'not found in db' })
+    }
+  } catch (err) {
+    next(err)
+  }
+})
 
 
 
