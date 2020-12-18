@@ -4,7 +4,7 @@ const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 const cors = require('cors')
 
-const sequelize = new Sequelize('test1', 'will', 'pass', {
+const sequelize = new Sequelize('test1', 'root', 'pass', {
   dialect: 'mysql'
 })
 
@@ -69,7 +69,7 @@ const Project = sequelize.define('project', {
         len: [3, 20]
       }
     },
-    decription: {
+    description: {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
@@ -79,12 +79,9 @@ const Project = sequelize.define('project', {
 
       status: {
         type: Sequelize.ENUM,
-    allowNull: false,
-    values: ['working on it', 'no one working on it', 'finished', '']
+        allowNull: false,
+        values: ['working on it', 'no one working on it', 'finished', '']
         }
-      
-      
-
   })
 
 
@@ -257,6 +254,148 @@ app.get('/users/:uid', async (req, res, next) => {
     const user = await User.findByPk(req.params.uid)
     if (user) {
       res.status(200).json(user)
+    } else {
+      res.status(404).json({ message: 'not found' })
+    }
+  } catch (err) {
+    next(err)
+  }
+})
+app.get('/projects', async (req, res, next)=>{
+  const query = {
+    where: {}
+  }
+  if (req.query.filter) {
+    query.where.name = {
+      [Op.like]: `%${req.query.filter}%`
+    }
+  }
+  let pageSize = 10
+  if (req.query.pageSize) {
+    pageSize = parseInt(req.query.pageSize)
+  }
+  if (req.query.page) {
+    const page = parseInt(req.query.page)
+    query.limit = pageSize
+    query.offset = page * pageSize
+  }
+  try {
+    const projects = await Project.findAll(query)
+    res.status(200).json(projects)
+  } catch (err) {
+    next(err)
+  }
+})
+app.post('/projects', async (req, res, next) => {
+  try {
+    await Project.create(req.body)
+    res.status(201).json({ message: 'created' })
+  } catch (err) {
+    next(err)
+  }
+})
+app.get('/bugs', async(req, res, next)=>{
+  const query = {
+    where: {}
+  }
+  if (req.query.filter) {
+    query.where.name = {
+      [Op.like]: `%${req.query.filter}%`
+    }
+  }
+  let pageSize = 10
+  if (req.query.pageSize) {
+    pageSize = parseInt(req.query.pageSize)
+  }
+  if (req.query.page) {
+    const page = parseInt(req.query.page)
+    query.limit = pageSize
+    query.offset = page * pageSize
+  }
+  try {
+    const bugs = await Bug.findAll(query)
+    res.status(200).json(bugs)
+  } catch (err) {
+    next(err)
+  }
+})
+app.post('/bugs', async (req, res, next)=>{
+  try{
+    await Bug.create(req.body)
+    res.status(201).json({message:'created'})
+  }catch(err){
+    next(err)
+  }
+})
+app.get('/projects/:pid', async (req, res, next) => {
+  try {
+    const project = await Project.findByPk(req.params.pid)
+    if (project) {
+      res.status(200).json(project)
+    } else {
+      res.status(404).json({ message: 'not found' })
+    }
+  } catch (err) {
+    next(err)
+  }
+})
+app.put('/projects/:pid', async (req, res, next) => {
+  try {
+    const project = await Project.findByPk(req.params.pid)
+    if (project) {
+      await project.update(req.body)
+      res.status(202).json({ message: 'accepted' })
+    } else {
+      res.status(404).json({ message: 'not found' })
+    }
+  } catch (err) {
+    next(err)
+  }
+})
+app.delete('/projects/:pid', async (req, res, next) => {
+  try {
+    const project = await Project.findByPk(req.params.pid)
+    if (project) {
+      await project.destroy()
+      res.status(202).json({ message: 'accepted' })
+    } else {
+      res.status(404).json({ message: 'not found' })
+    }
+  } catch (err) {
+    next(err)
+  }
+})
+app.get('/bugs/:bid', async (req, res, next) => {
+  try {
+    const bug = await Bug.findByPk(req.params.bid)
+    if (bug) {
+      res.status(200).json(bug)
+    } else {
+      res.status(404).json({ message: 'not found' })
+    }
+  } catch (err) {
+    next(err)
+  }
+})
+app.put('/bugs/:bid', async (req, res, next) => {
+  try {
+    const bug = await Bug.findByPk(req.params.bid)
+    if (bug) {
+      await bug.update(req.body)
+      res.status(202).json({ message: 'accepted' })
+    } else {
+      res.status(404).json({ message: 'not found' })
+    }
+  } catch (err) {
+    next(err)
+  }
+})
+app.delete('/bugs/:bid', async (req, res, next) => {
+  try {
+    const bug = await Bug.findByPk(req.params.bid)
+    if (bug) {
+      await bug.destroy()
+      res.status(202).json({ message: 'accepted' })
     } else {
       res.status(404).json({ message: 'not found' })
     }
