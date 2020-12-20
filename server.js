@@ -138,7 +138,7 @@ app.post('/users', async (req, res, next) => {
     next(err)
   }
 })
-
+//method to see all the available teams
 app.get('/teams', async (req, res, next) => {
   const query = {
     where: {}
@@ -164,7 +164,7 @@ app.get('/teams', async (req, res, next) => {
     next(err)
   }
 })
-
+// method for adding a new team
 app.post('/teams', async (req, res, next) => {
   try {
     await Team.create(req.body)
@@ -189,7 +189,7 @@ app.get('/teams/:tid', async (req, res, next) => {
   }
 })
 
-
+//method for change the team details
 app.put('/teams/:tid', async (req, res, next) => {
   try {
     const team = await Team.findByPk(req.params.tid)
@@ -204,7 +204,7 @@ app.put('/teams/:tid', async (req, res, next) => {
   }
 })
 
-
+//method for deleting a team
 app.delete('/teams/:tid', async (req, res, next) => {
   try {
     const team = await Team.findByPk(req.params.tid)
@@ -219,7 +219,7 @@ app.delete('/teams/:tid', async (req, res, next) => {
   }
 })
 
-
+//app to modify user details (account settings)
 app.put('/users/:uid', async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.uid)
@@ -234,7 +234,7 @@ app.put('/users/:uid', async (req, res, next) => {
   }
 })
 
-
+//method for deleting a user account
 app.delete('/users/:uid', async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.uid)
@@ -248,7 +248,7 @@ app.delete('/users/:uid', async (req, res, next) => {
     next(err)
   }
 })
-
+//method for a searching a specific user
 app.get('/users/:uid', async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.uid)
@@ -261,6 +261,7 @@ app.get('/users/:uid', async (req, res, next) => {
     next(err)
   }
 })
+//method for showing all the available projects to assign to
 app.get('/projects', async (req, res, next)=>{
   const query = {
     where: {}
@@ -286,6 +287,7 @@ app.get('/projects', async (req, res, next)=>{
     next(err)
   }
 })
+//method for adding a new project (on ADD Project button)
 app.post('/projects', async (req, res, next) => {
   try {
     await Project.create(req.body)
@@ -319,6 +321,8 @@ app.get('/bugs', async(req, res, next)=>{
     next(err)
   }
 })
+
+//method for adding a new bug (on Add bug button)
 app.post('/bugs', async (req, res, next)=>{
   try{
     await Bug.create(req.body)
@@ -327,6 +331,7 @@ app.post('/bugs', async (req, res, next)=>{
     next(err)
   }
 })
+//method for searching for a project based on the id (might be changed later)
 app.get('/projects/:pid', async (req, res, next) => {
   try {
     const project = await Project.findByPk(req.params.pid)
@@ -339,6 +344,7 @@ app.get('/projects/:pid', async (req, res, next) => {
     next(err)
   }
 })
+//method for modifying details for a project based on the id (might be changed later)
 app.put('/projects/:pid', async (req, res, next) => {
   try {
     const project = await Project.findByPk(req.params.pid)
@@ -352,6 +358,7 @@ app.put('/projects/:pid', async (req, res, next) => {
     next(err)
   }
 })
+//method for deleting a specific project 
 app.delete('/projects/:pid', async (req, res, next) => {
   try {
     const project = await Project.findByPk(req.params.pid)
@@ -365,6 +372,7 @@ app.delete('/projects/:pid', async (req, res, next) => {
     next(err)
   }
 })
+//method for searching for a bug based on the id (might be changed later)
 app.get('/bugs/:bid', async (req, res, next) => {
   try {
     const bug = await Bug.findByPk(req.params.bid)
@@ -377,6 +385,7 @@ app.get('/bugs/:bid', async (req, res, next) => {
     next(err)
   }
 })
+//method for modifying details for a bug based on the id (might be changed later)
 app.put('/bugs/:bid', async (req, res, next) => {
   try {
     const bug = await Bug.findByPk(req.params.bid)
@@ -390,6 +399,7 @@ app.put('/bugs/:bid', async (req, res, next) => {
     next(err)
   }
 })
+//method for deleting a bug based on the id (might be changed later)
 app.delete('/bugs/:bid', async (req, res, next) => {
   try {
     const bug = await Bug.findByPk(req.params.bid)
@@ -472,9 +482,56 @@ app.delete('/users/logOut', async (req, res, next) => {
     next(err)
   }
 })
-
-
-
-
+//method for assigning to a team as a team member (user) 
+app.post('/teams/:tid/users', async (req, res, next) => {
+  try {
+    const team = await Team.findByPk(req.params.tid)
+    if (team) {
+      const user = new User(req.body)
+      user.userId = team.id
+      await user.save()
+      res.status(201).json({ message: 'created' })
+    } else {
+      res.status(404).json({ message: 'not found' })
+    }
+  } catch (err) {
+    next(err)
+  }
+})
+//method for assigning to a bug as a tester (user) 
+app.post('/bugs/:bid/users', async (req, res, next) => {
+  try {
+    const bug = await Bug.findByPk(req.params.bid)
+    if (bug) {
+      const user = new User(req.body)
+      user.userId = bug.id
+      await user.save()
+      res.status(201).json({ message: 'created' })
+    } else {
+      res.status(404).json({ message: 'not found' })
+    }
+  } catch (err) {
+    next(err)
+  }
+})
+//method for seeing the team members of a project 
+app.get('/teams/:tid/projects/:pid', async (req, res, next) => {
+  try {
+    const team = await Team.findByPk(req.params.tid)
+    if (team) {
+      const projects = await project.getProjects({ id: req.params.pid })
+      const project = project.shift()
+      if (project) {
+        res.status(200).json(project)
+      } else {
+        res.status(404).json({ message: 'not found' })
+      }
+    } else {
+      res.status(404).json({ message: 'not found' })
+    }
+  } catch (err) {
+    next(err)
+  }
+})
 
 app.listen(8080)
