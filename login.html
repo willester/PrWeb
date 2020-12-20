@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>login</title>
+<style id="applicationStylesheet" type="text/css">
+	.mediaViewInfo {
+		--web-view-name: login;
+		--web-view-id: login;
+		--web-scale-on-resize: true;
+		--web-enable-deep-linking: true;
+	}
+	:root {
+		--web-view-ids: login;
+	}
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		border: none;
+	}
+	#login {
+		position: absolute;
+		width: 1920px;
+		height: 1080px;
+		background-color: rgba(255,255,255,1);
+		overflow: hidden;
+		--web-view-name: login;
+		--web-view-id: login;
+		--web-scale-on-resize: true;
+		--web-enable-deep-linking: true;
+	}
+	#Rectangle_13 {
+		fill: rgba(58,58,58,1);
+	}
+	.Rectangle_13 {
+		position: absolute;
+		overflow: visible;
+		width: 1920px;
+		height: 1080px;
+		left: 0px;
+		top: 0px;
+	}
+	#Rectangle_14 {
+		fill: rgba(255,255,255,1);
+		stroke: rgba(112,112,112,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.Rectangle_14 {
+		position: absolute;
+		overflow: visible;
+		width: 455px;
+		height: 93px;
+		left: 831px;
+		top: 323px;
+	}
+	#Rectangle_15 {
+		fill: rgba(255,255,255,1);
+		stroke: rgba(112,112,112,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.Rectangle_15 {
+		position: absolute;
+		overflow: visible;
+		width: 455px;
+		height: 93px;
+		left: 831px;
+		top: 452px;
+	}
+	#Username {
+		left: 542px;
+		top: 341px;
+		position: absolute;
+		overflow: visible;
+		width: 236px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Trebuchet MS;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 50px;
+		color: rgba(225,56,56,1);
+		text-transform: lowercase;
+	}
+	#Password {
+		left: 542px;
+		top: 470px;
+		position: absolute;
+		overflow: visible;
+		width: 225px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Trebuchet MS;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 50px;
+		color: rgba(225,56,56,1);
+		text-transform: lowercase;
+	}
+	#loginbtn {
+		position: absolute;
+		width: 455px;
+		height: 88px;
+		left: 831px;
+		top: 606px;
+		overflow: visible;
+	}
+	#Rectangle_3_t {
+		fill: url(#Rectangle_3_t);
+		stroke: rgba(112,112,112,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.Rectangle_3_t {
+		position: absolute;
+		overflow: visible;
+		width: 455px;
+		height: 88px;
+		left: 0px;
+		top: 0px;
+	}
+	#login_u {
+		left: 177px;
+		top: 18px;
+		position: absolute;
+		overflow: visible;
+		width: 103px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Trebuchet MS;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 45px;
+		color: rgba(58,58,58,1);
+	}
+	#Rectangle_17_w {
+		fill: url(#Rectangle_17_w);
+	}
+	.Rectangle_17_w {
+		position: absolute;
+		overflow: visible;
+		width: 1168px;
+		height: 106px;
+		left: 436px;
+		top: 44px;
+	}
+	#HOME {
+		left: 507px;
+		top: 74px;
+		position: absolute;
+		overflow: visible;
+		width: 99px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Trebuchet MS;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 40px;
+		color: rgba(255,255,255,1);
+		text-transform: lowercase;
+	}
+	#ABOUT_US {
+		left: 691px;
+		top: 74px;
+		position: absolute;
+		overflow: visible;
+		width: 154px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Trebuchet MS;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 40px;
+		color: rgba(255,255,255,1);
+		text-transform: lowercase;
+	}
+	#CONTACT {
+		left: 951px;
+		top: 74px;
+		position: absolute;
+		overflow: visible;
+		width: 137px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Trebuchet MS;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 40px;
+		color: rgba(255,255,255,1);
+		text-transform: lowercase;
+	}
+	#logo {
+		position: absolute;
+		width: 93px;
+		height: 113px;
+		left: 47px;
+		top: 36px;
+		overflow: visible;
+	}
+	#AWA {
+		left: 0px;
+		top: 0px;
+		position: absolute;
+		overflow: visible;
+		width: 94px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Trebuchet MS;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 50px;
+		color: rgba(225,56,56,1);
+	}
+	#Polygon_1 {
+		fill: rgba(225,56,56,1);
+	}
+	.Polygon_1 {
+		overflow: visible;
+		position: absolute;
+		width: 63px;
+		height: 55px;
+		transform: translate(-28px, -33px) matrix(1,0,0,1,43,91) rotate(180deg);
+		transform-origin: center;
+		left: 0px;
+		top: 0px;
+	}
+	#LOGIN_ {
+		left: 1422px;
+		top: 74px;
+		position: absolute;
+		overflow: visible;
+		width: 88px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Trebuchet MS;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 40px;
+		color: rgba(255,255,255,1);
+		text-transform: lowercase;
+	}
+	#SIGN_UP {
+		left: 1198px;
+		top: 74px;
+		position: absolute;
+		overflow: visible;
+		width: 127px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Trebuchet MS;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 40px;
+		color: rgba(255,255,255,1);
+		text-transform: lowercase;
+	}
+	#Line_3 {
+		fill: transparent;
+		stroke: rgba(255,255,255,1);
+		stroke-width: 5px;
+		stroke-linejoin: miter;
+		stroke-linecap: round;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.Line_3 {
+		overflow: visible;
+		position: absolute;
+		width: 55px;
+		height: 5px;
+		left: 1440.5px;
+		top: 131.5px;
+		transform: matrix(1,0,0,1,0,0);
+	}
+	#Dont_have_an_account_ {
+		left: 911px;
+		top: 721px;
+		position: absolute;
+		overflow: visible;
+		width: 317px;
+		white-space: nowrap;
+		text-align: left;
+		font-family: Trebuchet MS;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 30px;
+		color: rgba(255,255,255,1);
+	}
+	#loginbtn_ {
+		position: absolute;
+		width: 184px;
+		height: 55px;
+		left: 977px;
+		top: 776px;
+		overflow: visible;
+	}
+	#Rectangle_3_ba {
+		fill: url(#Rectangle_3_ba);
+		stroke: rgba(112,112,112,1);
+		stroke-width: 1px;
+		stroke-linejoin: miter;
+		stroke-linecap: butt;
+		stroke-miterlimit: 4;
+		shape-rendering: auto;
+	}
+	.Rectangle_3_ba {
+		position: absolute;
+		overflow: visible;
+		width: 184px;
+		height: 55px;
+		left: 0px;
+		top: 0px;
+	}
+	#sign_up {
+		left: 51px;
+		top: 13px;
+		position: absolute;
+		overflow: visible;
+		width: 83px;
+		white-space: nowrap;
+		text-align: center;
+		font-family: Trebuchet MS;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 25px;
+		color: rgba(58,58,58,1);
+	}
+</style>
+</head>
+<body>
+<div id="login">
+	<svg class="Rectangle_13">
+		<rect id="Rectangle_13" rx="0" ry="0" x="0" y="0" width="1920" height="1080">
+		</rect>
+	</svg>
+	<svg class="Rectangle_14">
+		<rect id="Rectangle_14" rx="46.5" ry="46.5" x="0" y="0" width="455" height="93">
+		</rect>
+	</svg>
+	<svg class="Rectangle_15">
+		<rect id="Rectangle_15" rx="46.5" ry="46.5" x="0" y="0" width="455" height="93">
+		</rect>
+	</svg>
+	<div id="Username">
+		<span>Username:</span>
+	</div>
+	<div id="Password">
+		<span>Password:</span>
+	</div>
+	<div id="loginbtn">
+		<svg class="Rectangle_3_t">
+			<linearGradient id="Rectangle_3_t" spreadMethod="pad" x1="0.5" x2="0.5" y1="-0.275" y2="1.521">
+				<stop offset="0" stop-color="#e13838" stop-opacity="1"></stop>
+				<stop offset="1" stop-color="#f6571b" stop-opacity="1"></stop>
+			</linearGradient>
+			<rect id="Rectangle_3_t" rx="44" ry="44" x="0" y="0" width="455" height="88">
+			</rect>
+		</svg>
+		<div id="login_u">
+			<span>login</span>
+		</div>
+	</div>
+	<svg class="Rectangle_17_w">
+		<linearGradient id="Rectangle_17_w" spreadMethod="pad" x1="0.5" x2="0.5" y1="0" y2="1">
+			<stop offset="0" stop-color="#e13838" stop-opacity="1"></stop>
+			<stop offset="1" stop-color="#f6571b" stop-opacity="1"></stop>
+		</linearGradient>
+		<rect id="Rectangle_17_w" rx="53" ry="53" x="0" y="0" width="1168" height="106">
+		</rect>
+	</svg>
+	<div id="HOME">
+		<span>HOME</span>
+	</div>
+	<div id="ABOUT_US">
+		<span>ABOUT US</span>
+	</div>
+	<div id="CONTACT">
+		<span>CONTACT</span>
+	</div>
+	<div id="logo">
+		<div id="AWA">
+			<span>AWA</span>
+		</div>
+		<svg class="Polygon_1" viewBox="0 0 63 55">
+			<path id="Polygon_1" d="M 31.49999618530273 0 L 62.99999618530273 55 L 0 55 Z">
+			</path>
+		</svg>
+	</div>
+	<div id="LOGIN_">
+		<span>LOGIN</span>
+	</div>
+	<div id="SIGN_UP">
+		<span>SIGN UP</span>
+	</div>
+	<svg class="Line_3" viewBox="0 0 50 5">
+		<path id="Line_3" d="M 0 0 L 50 0">
+		</path>
+	</svg>
+	<div id="Dont_have_an_account_">
+		<span>Don't have an account? </span>
+	</div>
+	<div id="loginbtn_">
+		<svg class="Rectangle_3_ba">
+			<linearGradient id="Rectangle_3_ba" spreadMethod="pad" x1="0.5" x2="0.5" y1="-0.275" y2="1.521">
+				<stop offset="0" stop-color="#e13838" stop-opacity="1"></stop>
+				<stop offset="1" stop-color="#f6571b" stop-opacity="1"></stop>
+			</linearGradient>
+			<rect id="Rectangle_3_ba" rx="27.5" ry="27.5" x="0" y="0" width="184" height="55">
+			</rect>
+		</svg>
+		<div id="sign_up">
+			<span>sign up</span>
+		</div>
+	</div>
+</div>
+</body>
+</html>
