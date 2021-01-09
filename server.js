@@ -3,9 +3,33 @@ const bodyParser = require('body-parser')
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 const cors = require('cors')
+const mysql = require('mysql2/promise')
 
-const sequelize = new Sequelize('test1', 'root', 'pass', {
-  dialect: 'mysql'
+const DB_USERNAME = 'will'
+const DB_PASSWORD = 'pass'
+
+
+let conn
+
+mysql.createConnection({
+    user : DB_USERNAME,
+    password : DB_PASSWORD
+})
+.then((connection) => {
+    conn = connection
+    return connection.query('CREATE DATABASE IF NOT EXISTS test1')
+})
+.then(() => {
+    return conn.end()
+})
+.catch((err) => {
+    console.warn(err.stack)
+})
+
+
+const sequelize = new Sequelize('test1', DB_USERNAME, DB_PASSWORD, {
+  dialect: 'mysql',
+  logging: false
 })
 
 const User = sequelize.define('user', {

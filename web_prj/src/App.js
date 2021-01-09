@@ -41,12 +41,14 @@ goToRoot=()=>{
           <Button label="Login" onClick={this.goToLogin}/>
           <br/>
           <br/>
-           <Button label="Register" onClick={this.goToRegister}/>
+           <Button label="Register" onClick={<addUser />}/>
            <br/>
            <br/>
           </div>
             </Route>
 
+            
+        
 
 
 
