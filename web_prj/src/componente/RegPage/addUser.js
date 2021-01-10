@@ -5,7 +5,7 @@ import {InputText} from 'primereact/inputtext';
 const HostIp=process.env.REACT_APP_IP;
 
 
-class addUser extends Component{
+class AddUser extends Component{
     constructor(props){
         super(props)
         this.state = {
@@ -43,58 +43,56 @@ class addUser extends Component{
             console.log(err);
         })
       }
- goToLogin=()=>{
-  window.location=`http://${HostIp}:3000/#/login`;
-}
+
 
 render(){
     return(
-        <div> TEST</div>
-        // <div>
-        //     <div className='add-user-layout'>
-        //     Register
-        //     <br/>
-        //     <br/>
+      //  <div> TEST ADD USER</div>
+        <div>
+            <div className='add-user-layout'>
+            Register
+            <br/>
+            <br/>
 
-        //     <span className="p-float-label">
+            <span className="p-float-label">
            
-        //         <InputText id="idEmail" value={this.state.email} onChange={this.handleChangeEmail} />
-        //         <label htmlFor="in">Email</label>
-        //         <br/>
-        //         <br/>
-        //         <br/>
-        //         <br/>
-        //     </span>
+                <InputText id="idEmail" value={this.state.email} onChange={this.handleChangeEmail} />
+                <label htmlFor="in">Email</label>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+            </span>
             
-        //         <span className="p-float-label">
-        //         <InputText id="idUsername" value={this.state.username} onChange={this.handleChangeUsername} />
-        //         <label htmlFor="idUsername">Username</label>
-        //         <br/>
-        //         <br/>
-        //         <br/>
-        //         <br/>
-        //      </span>
+                <span className="p-float-label">
+                <InputText id="idUsername" value={this.state.username} onChange={this.handleChangeUsername} />
+                <label htmlFor="idUsername">Username</label>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+             </span>
 
-        //      <span className="p-float-label">
-        //         <InputText id="idPassword" value={this.state.password} onChange={this.handleChangePassword} />
-        //         <label htmlFor="idPassword">Password</label>
-        //         <br/>
-        //         <br/>
-        //         <br/>
-        //         <br/>
-        //      </span>
+             <span className="p-float-label">
+                <InputText id="idPassword" value={this.state.password} onChange={this.handleChangePassword} />
+                <label htmlFor="idPassword">Password</label>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+             </span>
 
-        //     <Button label="Register" onClick={this.addUser} />
-        //         <br/>
-        //         <br/>
-        //     <Button label="Go to login" onClick={this.goToLogin} />
+            <Button label="Register" onClick={this.addUser} />
+                <br/>
+                <br/>
+          
              
-        //     </div>
-        // </div>
+            </div>
+        </div>
     )
 }
 
 
 }
 
-export default addUser
+export default AddUser
