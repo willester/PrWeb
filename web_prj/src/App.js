@@ -6,6 +6,7 @@ import Login from './componente/LogInPage/logInUser';
 import axios from 'axios';
 import './App.css';
 import Test from './Test'
+import Logo from './logo.png';
 const HostIp=process.env.REACT_APP_IP;
 
 
@@ -97,24 +98,28 @@ goToTest = () => {
 
       {/* metoda cu link atasat de buton */}
 
-      <Link to="/home">
-     <button type="button">
-         Home
-     </button>  
-      </Link>
+      <div className="Appp">
+      <nav className="navbar">
+        
+      <img src={Logo} className="logo"/>
 
+        <div className="links">
+        <Link to="/home">home</Link>
+            <a href="/aboutus">about us</a>
+            <a href="/contact">contact</a>
+            <Link to="/login">login</Link>
+            <Link to="/register">sign up</Link>
+        </div>
+    </nav>
+      </div>
 
-      <Link to="/register">
-     <button type="button">
-          Register
-     </button>  
-      </Link>
       
-      <Link to="/login">
-     <button type="button">
-          Login
-     </button>  
-      </Link>
+      <Link to="/login" className="loginbtn">login</Link>
+            <Link to="/register" className="signupbtn">sign up</Link>
+
+     
+      
+      
 
       <br />
 
