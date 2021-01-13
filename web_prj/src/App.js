@@ -1,8 +1,12 @@
 import {Button} from 'primereact/button';
 import React, { Component } from 'react';
-import { NavLink,Router, Switch, Route, HashRouter,Link} from 'react-router-dom'
-import AddUser from './componente/RegPage/addUser';
-import Login from './componente/LogInPage/logInUser';
+import {Link} from 'react-router-dom'
+import {HashRouter as Router, Switch, Route} from 'react-router-dom'
+import Nav from './componente/Nav';
+import About from './componente/About';
+import Contact from './componente/Contact';
+import AddUser from './componente/addUser';
+import LoginUser from './componente/logInUser';
 import axios from 'axios';
 import './App.css';
 import Test from './Test'
@@ -45,93 +49,127 @@ goToTest = () => {
 
   render()
   {
-    return(
-      // <div className="App">
-      //   <Router>
-      //     <Switch>
-      //       <Route path="/" exact={true}>
-      //       <div className="root-page">
-      //    I dunno how you got there
-      //     <br/>
-      //     <br/>
-      //     <Button label="Login" onClick={this.goToLogin}/>
-      //     <br/>
-      //     <br/>
-      //      <Button label="Register" onClick={<addUser />}/>
-      //      <br/>
-      //      <br/>
-      //     </div>
-      //       </Route>
+    // return(
+    //   // <div className="App">
+    //   //   <Router>
+    //   //     <Switch>
+    //   //       <Route path="/" exact={true}>
+    //   //       <div className="root-page">
+    //   //    I dunno how you got there
+    //   //     <br/>
+    //   //     <br/>
+    //   //     <Button label="Login" onClick={this.goToLogin}/>
+    //   //     <br/>
+    //   //     <br/>
+    //   //      <Button label="Register" onClick={<addUser />}/>
+    //   //      <br/>
+    //   //      <br/>
+    //   //     </div>
+    //   //       </Route>
 
             
         
 
 
 
-      //     </Switch>
-      //   </Router>
-      // </div>
+    //   //     </Switch>
+    //   //   </Router>
+    //   // </div>
 
-      <>
+    //   <>
 
-      {/* <Router>
-      <Switch>
-      <div>TESTU DIN APP </div>
-      <button onClick={this.goToTest}>test</button>
+    //   {/* <Router>
+    //   <Switch>
+    //   <div>TESTU DIN APP </div>
+    //   <button onClick={this.goToTest}>test</button>
 
-      <div id="TEST" style={{display: 'block'}} >
-      <AddUser />
-      </div>
-
-
+    //   <div id="TEST" style={{display: 'block'}} >
+    //   <AddUser />
+    //   </div>
 
 
-      </Switch>
-      </Router> */}
+
+
+    //   </Switch>
+    //   </Router> */}
       
-      <HashRouter>
+    //   <HashRouter>
         
-         {/* metoda cu navLink */}
+    //      {/* metoda cu navLink */}
 
-      {/* <li><NavLink exact to='/'>Home</NavLink></li>
-      <li><NavLink to='/register'>Stuff</NavLink></li> */}
+    //   {/* <li><NavLink exact to='/'>Home</NavLink></li>
+    //   <li><NavLink to='/register'>Stuff</NavLink></li> */}
 
-      {/* metoda cu link atasat de buton */}
+    //   {/* metoda cu link atasat de buton */}
 
-      <div className="Appp">
-      <nav className="navbar">
+    //   <div className="Appp">
+    //   <nav className="navbar">
         
-      <img src={Logo} className="logo"/>
+    //   <img src={Logo} className="logo"/>
 
-        <div className="links">
-        <Link to="/home">home</Link>
-            <a href="/aboutus">about us</a>
-            <a href="/contact">contact</a>
-            <Link to="/login">login</Link>
-            <Link to="/register">sign up</Link>
-        </div>
-    </nav>
-      </div>
+    //     <div className="links">
+    //     <Link to="/home">home</Link>
+    //         <a href="/aboutus">about us</a>
+    //         <a href="/contact">contact</a>
+    //         <Link to="/login">login</Link>
+    //         <Link to="/register">sign up</Link>
+    //     </div>
+    // </nav>
+    //   </div>
 
       
-      <Link to="/login" className="loginbtn">login</Link>
-            <Link to="/register" className="signupbtn">sign up</Link>
+    //   <Link to="/login" className="loginbtn">login</Link>
+    //         <Link to="/register" className="signupbtn">sign up</Link>
 
      
       
       
 
-      <br />
+    //   <br />
 
 
 
-      <Route exact path="/home" component={Test}/>
-      <Route path="/register" component={AddUser}/>
-      <Route path="/login" component={Login}/>
+    //   <Route exact path="/home" component={Test}/>
+    //   <Route path="/register" component={AddUser}/>
+    //   <Route path="/login" component={Login}/>
 
-      </HashRouter>
-      </>
-    )
+    //   </HashRouter>
+      // </>
+    //)
+    return(
+      <div className="App">
+        <Router>
+          <div>
+          <h1>home page</h1>
+            <p> You got a bug? We can fix it! <br/> Join our community and help other developers!</p>
+            <ul id="butoane">
+            <Link to='/login'><li id="login">login</li></Link>
+            <Link to='/signup'><li id="signup">sign up</li></Link>
+            <Nav/>
+            <Switch>
+                <Route path="/home" exact={true}>
+                  <Route exact  component={Test}/>
+                  <button label="Log In" onClick={this.goToLogin}/>
+                  <button label="Sign Up" onClick={this.goToRegister}/>
+                </Route>
+                <Route path="/login" exact={true}>
+                  <LoginUser logInUser={this.addUser}/>
+                </Route>
+                <Route path="/signup" exact={true}>
+                  <AddUser/>
+                </Route>
+                <Route path="/about" exact={true}>
+                  <About/>
+                </Route>
+                <Route path="/contact" exact={true}>
+                  <Contact/>
+                </Route>
+            </Switch>
+            </ul>
+          </div>
+        </Router>
+      </div>
+    );
   }
 }
 

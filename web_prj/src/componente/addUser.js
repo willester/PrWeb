@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {HashRouter as Router,Switch, Route} from 'react-router-dom'
+import Test from './test';
 import axios from 'axios';
 import {Button} from 'primereact/button';
 import {InputText} from 'primereact/inputtext';
@@ -39,15 +41,19 @@ class AddUser extends Component{
             console.log(res.data);
              console.log(res.config.data);
              alert("User Created!..GO to login")
+            
         }).catch(err => {
             console.log(err);
         })
+        window.location=`http://localhost:3000/#/test`;
       }
 
 
 render(){
     return(
       //  <div> TEST ADD USER</div>
+      <Router>
+          <Switch>
         <div>
             <div className='add-user-layout'>
             Register
@@ -85,10 +91,16 @@ render(){
             <Button label="Register" onClick={this.addUser} />
                 <br/>
                 <br/>
-          
+           
+                <Route path="/test" exact={true} >
+                    <Test/>
+                </Route>
+                    </div>
+                </div>
+        </Switch>
+        </Router>
              
-            </div>
-        </div>
+          
     )
 }
 
