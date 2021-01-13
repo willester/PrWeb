@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {HashRouter as Router,Switch, Route} from 'react-router-dom'
+import './AppC.css';
 import Test from './test';
 import axios from 'axios';
 import {Button} from 'primereact/button';

@@ -1,0 +1,115 @@
+.App {
+  text-align: center;
+  font-weight: bold;
+
+  /*background: url(./backgroundsimplu.png) no-repeat center center fixed; */
+  background-size: cover;
+  -moz-background-size:cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+  height: 625px;
+
+}
+h1{
+  color: white;
+}
+
+p
+{
+  margin-top: 50px;
+  position:absolute;
+  padding: 5px;
+	margin-left: 0px;
+  width: 800px;
+  align-content: center;
+	color:white;
+  font-size: 28px;
+
+}
+nav
+{
+  background-image:linear-gradient(to top, #F6571B, #E13838);
+  padding: 4px 0px;
+  display: block;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 80px;
+  margin-top: 0px;
+  margin-left: 250px;
+  margin-right: 250px;
+}
+
+
+nav li
+{
+  display: inline-block;
+  align-items: center;
+  list-style-type: none;
+  text-decoration: none;
+  margin: 4px;
+  font-size: 20px;
+  color: #fff;
+	padding: 10px 40px;
+	transition: 0.6s ease;
+	border-radius: 80px;
+  
+}
+
+nav li:hover
+{
+  background-color: #fff;
+  color: black;
+  border-radius: 80px;
+}
+#butoane
+{ 
+    list-style-type:none;
+    display: inline-block;
+}
+
+#login
+{
+    top: 60%;
+    left: 19%;
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+    font-size: 23px;
+    font-weight: bold;
+    background-image:linear-gradient(to top, #F6571B, #E13838);
+    color: white;
+    border:3px solid #3A3A3A;
+    border-radius: 80px;
+    padding: 15px 115px;
+    margin: 4px 4px;
+    
+}
+#signup
+{
+    top: 72%;
+    left: 19%;
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+    font-size: 23px;
+    font-weight: bold;
+    background-color: #3A3A3A;
+    color: #E13838;
+    border:3px solid #E13838;
+    border-radius: 80px;
+    padding: 15px 100px;
+    margin: 4px 4px;
+}
+
+#login:hover
+{
+    background-image:linear-gradient(to top,white, white);
+    color: #E13838;
+    border: 3px solid #E13838;
+}
+
+#signup:hover
+{
+    background-color: white;
+    color: #E13838;
+}
