@@ -9,6 +9,19 @@ function Projects() {
       <Nav2 />
         <Link to ="./profile"> <div class="profileicon"></div></Link>
 
+
+      <div className="add"><p>yo</p></div>
+      <div className="edit"></div>
+      <div className="remove"></div>
+
+
+      <div className="controls">
+            <p>add</p> <br/>
+            <p>edit</p> <br/>
+            <p>remove</p>
+      </div>
+
+
     <div className="stanga">
         <p>aici ar trebui <br/> sa avem o lista <br/> de proiecte <br/> responsive gen 
         <br/> care poate fi updatata etc </p>

@@ -394,3 +394,32 @@ h1{
   height: 400px;
   width: 850px;
 }
+
+#add
+{
+  background: url(./add.png);
+  left: 30px;
+  top: 100px;
+  position: absolute;
+	width: 100px;
+	height: 100px;
+}
+#edit
+{
+  
+  background: url(./edit.png);
+  left: 30px;
+  top: 100px;
+  position: absolute;
+	width: 100px;
+	height: 100px;
+}
+#remove
+{
+  background: url(./remove.png);
+  left: 30px;
+  top: 100px;
+  position: absolute;
+	width: 100px;
+	height: 100px;
+}
