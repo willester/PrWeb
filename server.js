@@ -8,7 +8,6 @@ const mysql = require('mysql2/promise')
 const DB_USERNAME = 'will'
 const DB_PASSWORD = 'pass'
 
-
 let conn
 
 mysql.createConnection({
@@ -17,7 +16,7 @@ mysql.createConnection({
 })
 .then((connection) => {
     conn = connection
-    return connection.query('CREATE DATABASE IF NOT EXISTS test1')
+    return connection.query('CREATE DATABASE IF NOT EXISTS test2')
 })
 .then(() => {
     return conn.end()
@@ -26,10 +25,12 @@ mysql.createConnection({
     console.warn(err.stack)
 })
 
-
-const sequelize = new Sequelize('test1', DB_USERNAME, DB_PASSWORD, {
+const sequelize = new Sequelize('test2', DB_USERNAME, DB_PASSWORD, {
   dialect: 'mysql',
-  logging: false
+  logging: false,
+  define: {
+    timestamps: false
+  },
 })
 
 const User = sequelize.define('user', {

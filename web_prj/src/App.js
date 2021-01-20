@@ -15,7 +15,7 @@ function App() {
   return (
     <Router>
     <div className="App">
-    <div class="logo">
+    <div className="logo">
 			</div>
       <Switch>
       <Route path="/" exact component={Home} />
@@ -34,10 +34,6 @@ function App() {
     </Router>
   );
 }
-
-
-
-
 
 
 export default App;

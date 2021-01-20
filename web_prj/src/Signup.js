@@ -4,47 +4,72 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import { Component } from 'react';
 const HostIp=process.env.REACT_APP_IP;
+const SERVER = 'http://localhost:8080'
+
+
 
 class Signup extends Component {
   constructor(props){
     super(props)
-    this.state = {
+    this.state = {   
+        user:{
         username: '',
         email:'',
         password:''
+        },
+        users: []
     }
 }
 
-handleChangeEmail = (event) => {
-    this.setState({
-        email: event.target.value,
-       
-    });
-}
-handleChangePassword = (event) => {
-    this.setState({
-        password: event.target.value
-    });
-}
-handleChangeUsername = (event) => {
-    this.setState({
-        username: event.target.value
-    });
-}
 
-addUser = () => {
-    const user = this.state;
-    axios.post(`http://${HostIp}:8080/api/user`, user).then(res => {
+ addUser(user) {
+
+    // try{
+    //     await fetch(`${SERVER}/users`, {
+    //         method: 'post',
+    //         headers: {
+    //           'Content-Type': 'application/json'
+    //         },s
+    //         body: JSON.stringify(user)
+    //       })
+    // }
+    // catch (err) {
+    //     console.warn(err)
+    //     this.emitter.emit('ADD_ONE_ERROR')
+    //   }
+                axios.post(`${SERVER}/users`, user).then(res => {
         this.props.onUserAdded(user);
+       //postman message
         console.log(res.data);
+        //actual data
          console.log(res.config.data);
          alert("User Created!..GO to login")
-        
+        //  window.location=`http://localhost:3000/projects`;
     }).catch(err => {
         console.log(err);
     })
-    window.location=`http://localhost:3000/projects`;
-  }
+    // window.location.reload();
+    //  window.location=`http://${SERVER}:3000/login`;
+}
+
+handleChangeEmail = (event) => {
+    const user = this.state.user
+    user.email = event.target.value
+    console.log(user)
+    
+}
+handleChangePassword = (event) => {
+    const user = this.state.user
+    user.password = event.target.value
+    console.log(user)
+}
+handleChangeUsername = (event) => {
+    const user = this.state.user
+    user.username = event.target.value
+    console.log(user)
+}
+
+
   render(){
   return (
         <div className="Signup">
@@ -67,7 +92,7 @@ addUser = () => {
 
           <ul id="butoane">
           <Link to='/login'><li id="butonmic">login</li></Link>
-          <Link to='/signup'><li id="butonmare" onClick={this.addUser}>sign up</li></Link>
+          <Link to='/signup'><li id="butonmare" onClick={() => this.addUser(this.state.user)}>sign up</li></Link>
           </ul>
 
     <div className="textaccount">
