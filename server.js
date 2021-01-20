@@ -273,7 +273,7 @@ app.delete('/users/:uid', async (req, res, next) => {
     next(err)
   }
 })
-//method for a searching a specific user
+//method for a searching a specific user by id 
 app.get('/users/:uid', async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.uid)
@@ -558,5 +558,23 @@ app.get('/teams/:tid/projects/:pid', async (req, res, next) => {
     next(err)
   }
 })
+
+// app.get('/users/check/:userN',async(req,res,next) => {
+//   try {
+//     const user = await User.find({
+//       where: {
+//          username: req.params.userN
+//       }
+//    })
+
+//   res.status(200).json({message: user})
+    
+//   } catch (err) {
+//     next(err)
+//   }
+// })
+
+
+
 
 app.listen(8080)

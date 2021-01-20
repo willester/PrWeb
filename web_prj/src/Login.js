@@ -26,7 +26,7 @@ handleChangeUsername = (event) => {
     });
 }
 
-  addUser = () => {
+  getUser = () => {
     const user = this.state;
     axios.post(`http://${HostIp}:8080/api/user`, user).then(res => {
         this.props.onUserAdded(user);
@@ -38,6 +38,8 @@ handleChangeUsername = (event) => {
     })
     window.location=`http://localhost:3000/projects`
   }
+
+
   render(){
   return (
     <div className="Login">
@@ -59,7 +61,7 @@ handleChangeUsername = (event) => {
 
       <ul id="butoane">
 
-            <Link to='/login'><li id="butonmare" onClick={this.addUser}>login</li></Link>
+            <Link to='/login'><li id="butonmare" onClick={() => this.getUser}>login</li></Link>
             <Link to='/signup'><li id="butonmic">sign up</li></Link>
 
       </ul>

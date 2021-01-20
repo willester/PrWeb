@@ -25,18 +25,23 @@ class Signup extends Component {
  async addUser(user) {
 
     try{
-        await fetch(`${SERVER}/users`, {
+        await fetch(`${SERVER}/users/register`, {
             method: 'post',
             headers: {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify(user)
           })
-    }
+          window.location=`http://localhost:3000/projects/${user.username}`;
+          
+        }
     catch (err) {
         console.warn(err)
         this.emitter.emit('ADD_ONE_ERROR')
       }
+
+      
+
     //     axios.post(`${SERVER}/users`, user).then(res => {
     //     console.log(this.props)
     //     this.props.onUserAdded(user);
@@ -45,7 +50,7 @@ class Signup extends Component {
     //     //actual data
     //      console.log(res.config.data);
     //      alert("User Created!..GO to login")
-        //  window.location=`http://localhost:3000/projects`;
+        
     // }).catch(err => {
     //     console.log(err);
     // })
