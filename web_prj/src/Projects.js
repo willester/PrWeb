@@ -33,7 +33,7 @@ class Projects extends Component {
     }
   }
 
-  async getAll2 () {
+  async getAll2() {
     try {
       const response = await fetch(`${SERVER}/projects`)
       const data = await response.json()
@@ -48,6 +48,24 @@ class Projects extends Component {
 
 
 
+  printProjectNames(array)
+  {
+    let stringReturnat = ''
+    
+    console.log(array.value)
+
+    if(array)
+    {  
+      for(let i in array)
+      {
+        stringReturnat += i
+        stringReturnat += "\n"
+      }
+    }
+    return stringReturnat
+  }
+
+
   render(){
   return (
     <div className="projectspage">
@@ -60,9 +78,9 @@ class Projects extends Component {
 
         
 
+      <div>{`${this.getAll2()}`}</div>
 
-
-       <div> {`${this.getAll2()}`} </div>
+       <div> {`${this.printProjectNames(this.getAll2())}`} </div>
  
 
 
