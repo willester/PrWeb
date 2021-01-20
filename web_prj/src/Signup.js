@@ -22,32 +22,33 @@ class Signup extends Component {
 }
 
 
- addUser(user) {
+ async addUser(user) {
 
-    // try{
-    //     await fetch(`${SERVER}/users`, {
-    //         method: 'post',
-    //         headers: {
-    //           'Content-Type': 'application/json'
-    //         },s
-    //         body: JSON.stringify(user)
-    //       })
-    // }
-    // catch (err) {
-    //     console.warn(err)
-    //     this.emitter.emit('ADD_ONE_ERROR')
-    //   }
-                axios.post(`${SERVER}/users`, user).then(res => {
-        this.props.onUserAdded(user);
-       //postman message
-        console.log(res.data);
-        //actual data
-         console.log(res.config.data);
-         alert("User Created!..GO to login")
+    try{
+        await fetch(`${SERVER}/users`, {
+            method: 'post',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(user)
+          })
+    }
+    catch (err) {
+        console.warn(err)
+        this.emitter.emit('ADD_ONE_ERROR')
+      }
+    //     axios.post(`${SERVER}/users`, user).then(res => {
+    //     console.log(this.props)
+    //     this.props.onUserAdded(user);
+    //    //postman message
+    //     console.log(res.data);
+    //     //actual data
+    //      console.log(res.config.data);
+    //      alert("User Created!..GO to login")
         //  window.location=`http://localhost:3000/projects`;
-    }).catch(err => {
-        console.log(err);
-    })
+    // }).catch(err => {
+    //     console.log(err);
+    // })
     // window.location.reload();
     //  window.location=`http://${SERVER}:3000/login`;
 }
