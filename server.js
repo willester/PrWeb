@@ -5,7 +5,7 @@ const Op = Sequelize.Op
 const cors = require('cors')
 const mysql = require('mysql2/promise')
 
-const DB_USERNAME = 'will'
+const DB_USERNAME = 'root'
 const DB_PASSWORD = 'pass'
 
 let conn
@@ -54,6 +54,11 @@ const User = sequelize.define('user', {
     validate: {
       len: [3, 20]
     }
+  }, 
+  typeOfAccount:{
+    type:Sequelize.ENUM,
+    allowNull:false,
+    values:['TST','MP']
   }
 })
 
@@ -87,7 +92,7 @@ const Project = sequelize.define('project', {
   })
 
   const Bug = sequelize.define('bug', {
-    name: {
+    repo: {
       type: Sequelize.STRING,
       allowNull: false,
       validate: {
@@ -106,7 +111,21 @@ const Project = sequelize.define('project', {
         type: Sequelize.ENUM,
         allowNull: false,
         values: ['working on it', 'no one working on it', 'finished', '']
+        },
+      teamMember:{
+        type:Sequelize.STRING,
+        allowNull: false,
+        validate: {
+        len: [3, 20]
+      },
+      severity:{
+        type:Sequelize.STRING,
+        allowNull:false,
+        validate:{
+          len:[3,20]
         }
+      }
+    }
   })
 
 

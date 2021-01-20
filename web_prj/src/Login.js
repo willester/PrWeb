@@ -4,40 +4,58 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import { Component } from 'react';
 const HostIp=process.env.REACT_APP_IP;
+const SERVER = 'http://localhost:8080'
 
 class Login extends Component {
   constructor(props){
     super(props)
     this.state = {
+      user:{
         username: '',
         password:''
+      }
     }
-}
+  }
+  async connectUser(user) {
 
+    try{
+        await fetch(`${SERVER}/users/logIn`, {
+            method: 'post',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(user)
+          })
+          window.location=`http://localhost:3000/projects/${user.username}`;
+          
+        }
+    catch (err) {
+        console.warn(err)
+        this.emitter.emit('ADD_ONE_ERROR')
+      }
+    }
 
 handleChangePassword = (event) => {
-    this.setState({
-        password: event.target.value
-    });
+    const user = this.state.user
+    user.password= event.target.value
 }
 handleChangeUsername = (event) => {
-    this.setState({
-        username: event.target.value
-    });
+    const user = this.state.user
+    user.username = event.target.value
 }
 
-  getUser = () => {
-    const user = this.state;
-    axios.post(`http://${HostIp}:8080/api/user`, user).then(res => {
-        this.props.onUserAdded(user);
-        console.log(res.data);
-         console.log(res.config.data);
-         alert("User Created!..GO to login")
-    }).catch(err => {
-        console.log(err);
-    })
-    window.location=`http://localhost:3000/projects`
-  }
+  // getUser = () => {
+  //   const user = this.state;
+  //   axios.post(`http://${HostIp}:8080/api/user`, user).then(res => {
+  //       this.props.onUserAdded(user);
+  //       console.log(res.data);
+  //        console.log(res.config.data);
+  //        alert("User Created!..GO to login")
+  //   }).catch(err => {
+  //       console.log(err);
+  //   })
+  //   window.location=`http://localhost:3000/projects`
+  // }
 
 
   render(){
@@ -61,7 +79,7 @@ handleChangeUsername = (event) => {
 
       <ul id="butoane">
 
-            <Link to='/login'><li id="butonmare" onClick={() => this.getUser}>login</li></Link>
+            <Link to='/login'><li id="butonmare" onClick={() => this.connectUser(this.state.user)}>login</li></Link>
             <Link to='/signup'><li id="butonmic">sign up</li></Link>
 
       </ul>
