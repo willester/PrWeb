@@ -15,7 +15,8 @@ class Signup extends Component {
         user:{
         username: '',
         email:'',
-        password:''
+        password:'',
+        typeOfAccount:''
         },
         users: []
     }
@@ -74,6 +75,11 @@ handleChangeUsername = (event) => {
     user.username = event.target.value
     console.log(user)
 }
+handleChangeTypeOfAccount = (event) => {
+  const user = this.state.user
+  user.typeOfAccount = event.target.value
+  console.log(user)
+}
 
 
   render(){
@@ -96,7 +102,7 @@ handleChangeUsername = (event) => {
           <br/>
           <label id="usertype" className="labels">user type ('TST' or 'MP'):</label>
           
-          <input id="usertype" className="casetaalba" name="usertype" type="text" value={this.state.type} />
+          <input id="usertype" className="casetaalba" name="usertype" type="text" value={this.state.typeOfAccount} onChange={this.handleChangeTypeOfAccount} />
           </div>
 
 

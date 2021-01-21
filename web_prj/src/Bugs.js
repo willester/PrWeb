@@ -1,8 +1,34 @@
 import './App.css';
 import Nav2 from './Nav2';
 import {Link} from 'react-router-dom';
+import { Component } from 'react';
 
-function Bugs() {
+const SERVER = 'http://localhost:8080'
+
+class Bugs extends Component {
+  constructor(props){
+    super(props)
+    this.state = {   
+        bugs: {}
+    }
+  }
+    componentDidMount () {
+      console.log("merge didmountu")
+      this.getAll()
+    }
+    async getAll () {
+      try {
+        const response = await fetch(`${SERVER}/bugs`)
+        const data = await response.json()
+        this.bugs = data
+        console.log(this.bugs)
+  
+      } catch (err) {
+        console.warn(err)
+        
+      }
+    }
+  render(){
   return (
     <div className="bugs">
       <Nav2 />
@@ -52,7 +78,8 @@ function Bugs() {
 
 
     </div>
-  );
+    );
+  }
 }
 
 export default Bugs;

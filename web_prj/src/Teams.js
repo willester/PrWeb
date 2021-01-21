@@ -1,8 +1,34 @@
 import './App.css';
 import Nav2 from './Nav2';
 import {Link} from 'react-router-dom';
+import { Component } from 'react';
 
-function Teams() {
+const SERVER = 'http://localhost:8080'
+
+class Teams extends Component {
+  constructor(props){
+    super(props)
+    this.state = {   
+        teams: {}
+    }
+  }
+  componentDidMount () {
+    console.log("merge didmountu")
+    this.getAll()
+  }
+  async getAll () {
+    try {
+      const response = await fetch(`${SERVER}/teams`)
+      const data = await response.json()
+      this.teams = data
+      console.log(this.teams)
+
+    } catch (err) {
+      console.warn(err)
+      
+    }
+  }
+  render(){
   return (
     <div className="teams">
       <Nav2 />
@@ -51,6 +77,7 @@ function Teams() {
 
       </div>
   );
+  }
 }
 
 export default Teams;
