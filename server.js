@@ -5,7 +5,7 @@ const Op = Sequelize.Op
 const cors = require('cors')
 const mysql = require('mysql2/promise')
 
-const DB_USERNAME = 'root'
+const DB_USERNAME = 'will'
 const DB_PASSWORD = 'pass'
 
 let conn
@@ -532,7 +532,9 @@ app.post('/teams/:tid/users', async (req, res, next) => {
     const team = await Team.findByPk(req.params.tid)
     if (team) {
       const user = new User(req.body)
-      user.userId = team.id
+      user.teamId = team.id
+      const user2 = new User(req.body)
+      user2.destroy()
       await user.save()
       res.status(201).json({ message: 'created' })
     } else {
@@ -542,23 +544,24 @@ app.post('/teams/:tid/users', async (req, res, next) => {
     next(err)
   }
 })
-//method for assigning to a bug as a tester (user) 
-app.post('/bugs/:bid/users', async (req, res, next) => {
-  try {
-    const bug = await Bug.findByPk(req.params.bid)
-    if (bug) {
-      const user = new User(req.body)
-      user.userId = bug.id
-      await user.save()
-      res.status(201).json({ message: 'created' })
-    } else {
-      res.status(404).json({ message: 'not found' })
-    }
-  } catch (err) {
-    next(err)
-  }
-})
-//method for seeing the team members of a project 
+// //method for assigning to a bug as a tester (user) 
+// app.post('/bugs/:bid/users', async (req, res, next) => {
+//   try {
+//     let bug = await Bug.findByPk(req.params.bid)
+//     if (bug) {
+//       // const user = new User(req.body)
+//       bug.userId = req.body.userId
+//     await bug.update()
+//       // await user.save()
+//       res.status(201).json({ message: 'created' })
+//     } else {
+//       res.status(404).json({ message: 'not found' })
+//     }
+//   } catch (err) {
+//     next(err)
+//   }
+// })
+//method for seeing the first project of a team
 app.get('/teams/:tid/projects/:pid', async (req, res, next) => {
   try {
     const team = await Team.findByPk(req.params.tid)
