@@ -1,4 +1,5 @@
 .App {
+  
   text-align: center;
   font-weight: bold;
 
@@ -8,8 +9,8 @@
 
 .App:not(.Home)
   {
-    background: url(./backgroundsimplu.png) no-repeat center center fixed; 
     background-size: cover;
+    background: url(./backgroundsimplu.png) no-repeat center center fixed;  
     -moz-background-size:cover;
     -o-background-size: cover;
     -webkit-background-size: cover;
@@ -225,23 +226,35 @@ h1{
 
 
 /*LOGIN & SIGNUP PAGES*/
-.info
+.infol
 {
-  
-    font-size: 23px;
-    justify-content: center;
+    text-align:end;
+    font-size: 22px;
     top: 290px;
-    left: 510px;
+    right: 450px;
+    /*left: 525px;*/
     position: absolute;
     transform: translate(0, -50%);
 }
+.infos
+{
+    text-align:end;
+    font-size: 22px;
+    top: 290px;
+    right: 450px;
+    /*left: 525px;*/
+    position: absolute;
+    transform: translate(0, -50%);
+}
+
+
 .labels
 {
     color: #E13838;
 }
 .casetaalba
 {
-    margin-right: 200px;;
+    right: 200px;;
     padding:20px 100px;
     margin: 10px;
     border: 1px solid;
@@ -393,4 +406,293 @@ h1{
   border-radius: 80px;
   height: 400px;
   width: 850px;
+}
+
+
+.ul-stanga
+{
+
+  justify-content: center;
+  align-content: center;
+  list-style-type: none;
+  padding: 2px 10px;
+}
+.ul-stanga li
+{
+  text-decoration: none;
+  width: 253px;
+  color: #E13838;
+  justify-content: center;
+  align-content: center;
+  background-color: #3A3A3A;
+  margin: 15px;
+  border: 2px solid #E13838;
+  border-radius: 80px;
+  height: 28px;
+}
+.ul-stanga .active
+{
+  text-decoration: none;
+  width: 253px;
+  color: white;
+  justify-content: center;
+  align-content: center;
+  background-color: #E13838;
+  margin: 15px;
+  border: 2px solid #E13838;
+  border-radius: 80px;
+  height: 28px;
+}
+
+.hey
+{
+  text-decoration: none;
+}
+
+
+
+.add
+{
+  background: url(./add.png);
+  left: 100px;
+  top: 60px;
+  position: absolute;
+	width: 30px;
+	height: 30px;
+}
+.addtext
+{
+  text-decoration: none;
+  color: white;
+  font-size: 22px;
+  left: 140px;
+  top: 35px;
+  position: absolute;
+	width: 30px;
+	height: 30px;
+}
+.remove
+{
+  background: url(./remove.png);
+  left: 100px;
+  top: 100px;
+  position: absolute;
+	width: 30px;
+	height: 30px;
+}
+.removetext
+{
+  text-decoration: none;
+  color: white;
+  font-size: 22px;
+  left: 140px;
+  top: 75px;
+  position: absolute;
+	width: 30px;
+	height: 30px;
+}
+.edit 
+{
+  background: url(./edit.png);
+  left: 100px;
+  top: 140px;
+  position: absolute;
+	width: 30px;
+	height: 30px;
+}
+.edittext
+{
+  text-decoration: none;
+  color: white;
+  font-size: 22px;
+  left: 140px;
+  top: 115px;
+  position: absolute;
+	width: 30px;
+	height: 30px;
+}
+
+.linie
+{
+  position: absolute;
+  margin-top: 52px;
+  margin-left: 2px;
+  height: 2px;
+  width: 845px;
+  background-color: #E13838;
+}
+
+.projectstext
+{
+  position: absolute;
+  top: -23px;
+  left: 300px;
+  font-size: 30px;
+  font-weight: normal;
+}
+
+.description
+{
+  position: absolute;
+  top: 60px;
+  left: 50px;
+  font-size: 30px;
+  font-weight: normal;
+}
+.github
+{
+  position: absolute;
+  top: 200px;
+  left: 50px;
+  font-size: 30px;
+  font-weight: normal;
+}
+
+.teamstext
+{
+  position: absolute;
+  color: white;
+  top: -15px;
+  left: 100px;
+  font-size: 26px;
+}
+
+.linie2
+{
+  position: absolute;
+  top: 52px;
+  left: 140px;
+  height: 3px;
+  width: 185px;
+  background-color: white;
+}
+
+.bugstext
+{
+  position: absolute;
+  color: white;
+  top: -15px;
+  left: 100px;
+  font-size: 26px;
+}
+.linie3
+{
+  position: absolute;
+  top: 52px;
+  left: 123px;
+  height: 3px;
+  width: 65px;
+  background-color: white;
+}
+
+/*PROFILE PAGE */
+
+.stanga2
+{
+  color: white;
+  position: absolute;
+  left: 80px;
+  top: 150px;
+  border: 2px solid #E13838;
+  border-radius: 50px;
+  height: 250px;
+  width: 300px;
+}
+.main2
+{
+  color: #E13838;
+  position: absolute;
+  left: 570px;
+  top: 150px;
+  border: 2px solid #E13838;
+  border-radius: 80px;
+  height: 280px;
+  width: 500px;
+}
+
+.ul-dreapta
+{
+
+  justify-content: center;
+  align-content: center;
+  list-style-type: none;
+  padding: 2px 10px;
+  position: absolute;
+  right: 40px;
+}
+.ul-dreapta li
+{
+  text-decoration: none;
+  width: 253px;
+  color: #E13838;
+  justify-content: center;
+  align-content: center;
+  background-color: #3A3A3A;
+  margin: 20px;
+  border: 2px solid #E13838;
+  border-radius: 80px;
+  height: 30px;
+}
+
+.ul-dreapta .active
+{
+  text-decoration: none;
+  font-weight: bold;
+  width: 253px;
+  color: white;
+  justify-content: center;
+  align-content: center;
+  background-color: #E13838;
+  margin: 15px;
+  border: 2px solid #E13838;
+  border-radius: 80px;
+  height: 28px;
+}
+
+.hey2
+{
+  text-decoration: none;
+  font-weight: normal;
+}
+.titles
+{
+  color: white;
+  text-align: end;
+  position: absolute;
+  top: 32px;
+  left: 30px;
+
+}
+.title
+{
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.edit1
+{
+  background: url(./edit.png);
+  right: 30px;
+  top: 38px;
+  position: absolute;
+	width: 30px;
+	height: 30px;
+}
+.edit2
+{
+  background: url(./edit.png);
+  right: 30px;
+  top: 93px;
+  position: absolute;
+	width: 30px;
+	height: 30px;
+}
+.edit3
+{
+  background: url(./edit.png);
+  right: 30px;
+  top: 148px;
+  position: absolute;
+	width: 30px;
+	height: 30px;
 }

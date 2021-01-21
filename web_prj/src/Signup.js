@@ -81,18 +81,22 @@ handleChangeUsername = (event) => {
         <div className="Signup">
           <Nav />
 
-          <div className="info">
+          <div className="infos">
           <label className="labels">email:</label>
-          <br/>
+          
           <input className="casetaalba" name="email" type="text" value={this.state.email} onChange={this.handleChangeEmail}/>
           <br/>
           <label className="labels">username:</label>
-          <br/>
+          
           <input className="casetaalba" name="username" type="text" value={this.state.username} onChange={this.handleChangeUsername}/>
           <br/>
           <label id="password" className="labels">password:</label>
-          <br/>
+        
           <input id="password" className="casetaalba" name="password" type="text" value={this.state.password} onChange={this.handleChangePassword} />
+          <br/>
+          <label id="usertype" className="labels">user type ('TST' or 'MP'):</label>
+          
+          <input id="usertype" className="casetaalba" name="usertype" type="text" value={this.state.type} />
           </div>
 
 

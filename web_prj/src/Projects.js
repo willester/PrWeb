@@ -72,11 +72,43 @@ class Projects extends Component {
       <Nav2 />
         <Link to ="./profile"> <div class="profileicon"></div></Link>
 
-    <div className="stanga">
-        <p>aici ar trebui <br/> sa avem o lista <br/> de proiecte <br/> responsive gen 
-        <br/> care poate fi updatata etc </p>
+  <div className="buttons">
+  <Link>
+  <div className="mareadd">
+  <div className="add"></div>
+  <p className="addtext">add</p>
+  </div>
+  </Link>
+  
+  <Link>
+  <div className="mareremove">
+  <div className="remove"></div>
+  <p className="removetext">remove</p>
+  </div>
+  </Link>
 
-        
+  <Link>
+  <div className="mareedit">
+  <div className="edit"></div>
+  <p className="edittext">edit</p>
+  </div>
+  </Link>
+  
+  </div>
+
+    <div className="stanga">
+
+
+
+        <div className="labelstanga">
+          <ul className="ul-stanga">
+          <Link className="hey" to='/Projects'><li className="active">Web Tech</li></Link>
+            <Link className="hey" to='/Projects'><li>Multimedia</li></Link>
+            <Link className="hey" to='/Projects'><li>Android</li></Link>
+            <Link className="hey" to='/Projects'><li>Econometrics</li></Link>
+            <Link className="hey" to='/Projects'><li>Cybernetics</li></Link>
+          </ul>
+        </div>
 
       <div>{`${this.getAll2()}`}</div>
 
@@ -88,7 +120,13 @@ class Projects extends Component {
     </div>
 
     <div className="main">
-        <p>here are the main projects</p>
+    <div className="linie"></div>
+        <p className="projectstext">Web Tech Project</p>
+        <p className="description">Description.</p>
+        <p className="github">Link GitHub.</p>
+    
+
+
     </div>
 
       </div>

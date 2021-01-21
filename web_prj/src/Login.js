@@ -63,13 +63,11 @@ handleChangeUsername = (event) => {
     <div className="Login">
       <Nav />
 
-      <div className="info">
+      <div className="infol">
         <label className="labels">username:</label>
-      <br/>
         <input className="casetaalba" name="username" type="text" value={this.state.username} onChange={this.handleChangeUsername}/>
       <br/>
         <label id="password" className="labels">password:</label>
-      <br/>
         <input id="password" className="casetaalba" name="password" type="text" value={this.state.password} onChange={this.handleChangePassword}/>
       </div>
 
