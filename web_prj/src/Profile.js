@@ -8,6 +8,8 @@ function Profile() {
       <Nav2 />
       <Link to ="./profile"> <div class="profileicon"></div></Link>
       
+    <h1 className="prof">Profile page</h1>
+
       <div className="stanga2">
 
       <div className="labelstanga">
